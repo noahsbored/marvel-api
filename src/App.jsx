@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 
 function App() {
+  const [selectedCharacterId, setSelectedCharacterId] = useState(null);
+
   return (
     <div className="App">
-      <CharacterDetail characterId={1011334}/>
+      <CharacterList onCharacterSelect={setSelectedCharacterId} />
+      {selectedCharacterId && <CharacterDetail characterId={selectedCharacterId} />}
     </div>
   );
 }
